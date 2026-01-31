@@ -380,47 +380,57 @@ you always make me feel worthy and there has never been a single moment where i 
   <span style="--i:30">🤎</span>
 </div>
 <script>
-  const envelope = document.getElementById("envelope");
-  const screen = document.getElementById("envelopeScreen");
-  const wrapper = document.querySelector(".wrapper");
+const envelope = document.getElementById("envelope");
+const screen = document.getElementById("envelopeScreen");
+const wrapper = document.querySelector(".wrapper");
 
-  envelope.addEventListener("click", () => {
-    envelope.classList.add("open");
+// Envelope click — exactly like before
+envelope.addEventListener("click", () => {
+  envelope.classList.add("open");
 
-    setTimeout(() => {
-      screen.style.display = "none";
-      wrapper.classList.add("show");
-    }, 800);
-  });
+  setTimeout(() => {
+    screen.style.display = "none";
+    wrapper.classList.add("show");
+  }, 800);
+});
+
+// Surprise button click
+const surpriseBtn = document.getElementById('surpriseBtn');
+surpriseBtn.addEventListener('click', () => {
+  showTulipsAndConfetti();
+  surpriseBtn.style.pointerEvents = 'none';
+  surpriseBtn.style.transform = 'scale(1.05)';
+});
+
+// Function to show tulips + confetti
 function showTulipsAndConfetti() {
   const tulipBouquet = document.getElementById('tulipBouquet');
 
   // 1. Tulip emoji confetti
-  for (let i = 0; i < 60; i++) { // more confetti = bigger "WOW"
+  for (let i = 0; i < 60; i++) { // big WOW effect
     const conf = document.createElement('div');
     conf.className = 'confetti';
     conf.style.position = 'absolute';
     conf.style.left = Math.random() * window.innerWidth + 'px';
     conf.style.top = Math.random() * 50 + 'px';
-    conf.style.fontSize = (20 + Math.random() * 30) + 'px'; // big and chunky
+    conf.style.fontSize = (20 + Math.random() * 30) + 'px';
     conf.style.opacity = 0.9;
     conf.style.pointerEvents = 'none';
     conf.style.transition = 'transform 2.5s ease, opacity 2.5s ease';
-    conf.innerText = '🌷'; // TULIP EMOJI
+    conf.innerText = '🌷';
 
     document.body.appendChild(conf);
 
     // Animate falling
-    const fallX = (Math.random() - 0.5) * 200; // random sideways drift
-    const fallY = 600 + Math.random() * 200; // fall distance
-    const rotate = Math.random() * 720; // spin
+    const fallX = (Math.random() - 0.5) * 200;
+    const fallY = 600 + Math.random() * 200;
+    const rotate = Math.random() * 720;
 
     setTimeout(() => {
       conf.style.transform = `translate(${fallX}px, ${fallY}px) rotate(${rotate}deg)`;
       conf.style.opacity = 0;
     }, 50);
 
-    // Remove after animation
     setTimeout(() => conf.remove(), 2600 + Math.random() * 500);
   }
 
@@ -428,14 +438,6 @@ function showTulipsAndConfetti() {
   tulipBouquet.style.opacity = 1;
   tulipBouquet.style.transform = 'translateX(-50%) scale(1)';
 }
-
-  // Optional: animate button slightly when clicked
-  surpriseBtn.style.transform = 'scale(1.05)';
-  surpriseBtn.style.pointerEvents = 'none';
-});
-  
-  
-  
 </script>
 </body>
 </html>
