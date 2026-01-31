@@ -395,25 +395,39 @@ you always make me feel worthy and there has never been a single moment where i 
 function showTulipsAndConfetti() {
   const tulipBouquet = document.getElementById('tulipBouquet');
 
-  // 1. Confetti
-  for (let i = 0; i < 30; i++) {
+  // 1. Tulip emoji confetti
+  for (let i = 0; i < 60; i++) { // more confetti = bigger "WOW"
     const conf = document.createElement('div');
     conf.className = 'confetti';
-    conf.style.background = ['#f28ab2','#ffd166','#06d6a0','#4d96ff','#ff6b6b'][Math.floor(Math.random()*5)];
+    conf.style.position = 'absolute';
     conf.style.left = Math.random() * window.innerWidth + 'px';
     conf.style.top = Math.random() * 50 + 'px';
-    conf.style.width = conf.style.height = (5 + Math.random() * 10) + 'px';
+    conf.style.fontSize = (20 + Math.random() * 30) + 'px'; // big and chunky
+    conf.style.opacity = 0.9;
+    conf.style.pointerEvents = 'none';
+    conf.style.transition = 'transform 2.5s ease, opacity 2.5s ease';
+    conf.innerText = '🌷'; // TULIP EMOJI
+
     document.body.appendChild(conf);
-    setTimeout(() => conf.remove(), 2500 + Math.random() * 500);
+
+    // Animate falling
+    const fallX = (Math.random() - 0.5) * 200; // random sideways drift
+    const fallY = 600 + Math.random() * 200; // fall distance
+    const rotate = Math.random() * 720; // spin
+
+    setTimeout(() => {
+      conf.style.transform = `translate(${fallX}px, ${fallY}px) rotate(${rotate}deg)`;
+      conf.style.opacity = 0;
+    }, 50);
+
+    // Remove after animation
+    setTimeout(() => conf.remove(), 2600 + Math.random() * 500);
   }
 
-  // 2. Show tulips
+  // 2. Show tulip bouquet
   tulipBouquet.style.opacity = 1;
   tulipBouquet.style.transform = 'translateX(-50%) scale(1)';
 }
-  const surpriseBtn = document.getElementById('surpriseBtn');
-surpriseBtn.addEventListener('click', () => {
-  showTulipsAndConfetti();
 
   // Optional: animate button slightly when clicked
   surpriseBtn.style.transform = 'scale(1.05)';
