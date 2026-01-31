@@ -25,32 +25,33 @@ body {
   color: #8b5a2b;
 }
 
-/* ===== WRAPPER GRID ===== */
 .wrapper {
-  display: grid;
-  grid-template-columns: 1fr auto; /* letter + image */
+  display: flex; /* easier than grid here */
   gap: 30px;
   padding: 0 40px 40px;
-  width: max-content; /* lets it grow horizontally */
+  min-width: max-content; /* allows horizontal scroll for wide content */
 }
 
-/* ===== LETTER ===== */
 .letter {
+  flex: 0 0 600px; /* fixed width, keeps paragraph nice */
   background: #b08968;
   border-radius: 22px;
   padding: 40px 45px;
   font-size: 22px;
   line-height: 1.9;
-  height: auto;
-  max-height: none;
   overflow: visible;
-  
+
   /* fade-in animation */
   opacity: 0;
   animation: fadeIn 2s ease forwards;
   animation-delay: 0.5s;
   position: relative;
   z-index: 2;
+}
+
+.side {
+  flex: 0 0 auto; /* image width can be anything */
+  position: relative;
 }
 
 @keyframes fadeIn {
