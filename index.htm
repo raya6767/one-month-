@@ -35,11 +35,12 @@ body {
 .tiramisu {
   position: absolute;
   top: 20px;
-  right: 20px;
+  left: 20px;
   text-align: center;
+  z-index: 0;
 }
 .tiramisu img {
-  width: 60%;
+  width: 160px;
 }
 .tiramisu p {
   font-size: 26px;
@@ -47,67 +48,107 @@ body {
 
 /* envelope */
 .envelope {
-  background: #f5e6d3;
-  width: 80%;
-  padding: 25px;
-  border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-  text-align: center;
   position: relative;
+  width: 520px;
+  height: 320px;
+  background: #f5e6d3;
+  border-radius: 10px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
 }
 
-/* pulsing heart */
+/* envelope flap */
+.envelope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 260px solid transparent;
+  border-right: 260px solid transparent;
+  border-top: 160px solid #e7d1b3;
+  z-index: 3;
+}
+
+/* envelope bottom */
+.envelope::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 260px solid transparent;
+  border-right: 260px solid transparent;
+  border-bottom: 160px solid #e1c7a4;
+  z-index: 1;
+}
+
+/* heart */
 .heart {
-  width: 80px;
-  height: 80px;
+  position: absolute;
+  top: 95px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-45deg);
+  width: 70px;
+  height: 70px;
   background: #8b5a2b;
-  transform: rotate(-45deg);
-  margin: 20px auto;
   cursor: pointer;
   animation: pulse 1.5s infinite;
+  z-index: 4;
 }
 @keyframes pulse {
-  0% { transform: rotate(-45deg) scale(1); }
-  50% { transform: rotate(-45deg) scale(1.1); }
-  100% { transform: rotate(-45deg) scale(1); }
+  0% { transform: translateX(-50%) rotate(-45deg) scale(1); }
+  50% { transform: translateX(-50%) rotate(-45deg) scale(1.1); }
+  100% { transform: translateX(-50%) rotate(-45deg) scale(1); }
 }
 .heart:before,
 .heart:after {
   content: "";
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   background: #8b5a2b;
   border-radius: 50%;
   position: absolute;
 }
-.heart:before { top: -40px; left: 0; }
-.heart:after { left: 40px; top: 0; }
+.heart:before { top: -35px; left: 0; }
+.heart:after { left: 35px; top: 0; }
+
 .heart span {
   position: absolute;
   transform: rotate(45deg);
   color: white;
-  top: 25px;
-  left: 8px;
-  font-size: 14px;
+  font-size: 13px;
+  top: 22px;
+  left: 10px;
 }
 
-/* unfolding letter */
+/* letter */
 .letter {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background: #b08968;
+  padding: 30px;
+  border-radius: 10px;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 1.5s ease;
-  font-size: 14.5px;
-  line-height: 1.7;
-  text-align: left;
+  transition: max-height 1.6s ease;
+  font-size: 18px;
+  line-height: 1.8;
+  color: white;
+  z-index: 0;
 }
 .letter.open {
-  max-height: 75%;
+  max-height: 900px;
 }
 
 /* lava text */
 .lava {
   position: relative;
-  color: #5c2c0d;
+  color: #fff;
 }
 .lava::after {
   content: "💥";
@@ -150,13 +191,17 @@ body {
 
 <div class="envelope">
   <div class="heart" onclick="openLetter()">
-    <span> click here </span>
+    <span>click here</span>
   </div>
 
   <div class="letter" id="letter">
-    <p>hii babyyy i know i already posted you a paragraph and you’ll have to do so much readinggg im sorry myloveee buttt i wanna tell you happy one month again!! YAAYAYYAYAYA i cant believe i already spent 30 joyful days of my year with youuu 🤎 and inshallah ill spend all the days i have left with you. loving you has brought out the innermost happiness i had in me. i never thought anyone would ever be worthy enough to see it let alone bring it out but here you are woaaahhhh. i love every single thing about you from head to toe especially your dih baby 🔥 youre so perfect inside and out and if anything youre just so unreal baby i cant believe youre all mine. my personal favorite part about us is how we arent just lovers baby we’re best friends and soulmates and we have a bond that could represent every possible bond in this life and i wouldnt ever choose anyone or anything over this. i love how we can be freaky without it ever feeling weird and then suddenly switch to being soft and cute like nothing changed and it just feels right with you. i never feel like i have to fake anything or hide parts of myself because i know you would never see my flaws as flaws. i can be myself or whoever i choose to be in that moment and youll still love me the same or even more and that means everything to me. just so you know i rushed this a bittt thats why im not so shakespearey but baby that doesnt make this any less loving or from the heart. youre my world and everything i ever dreamed of and i wouldnt ask for anything better than this. i pray everyday that you stay by my side till my last breath because youre truly all i need in this world. thank you for being you and thank you for showing me what love truly is. you always make me feel worthy and there has never been a single moment where i thought otherwise all thanks to you mylove. i genuinely thank you from the bottom of my heart. there arent enough words to express my gratitude for you or even a quarter of my love but all the paragraphs i wrote you and will continue to write you are an attempt i hope they didnt fail but um yes baby thats it 
+    <p>
+hii babyyy i know i already posted you a paragraph and you’ll have to do so much readinggg im sorry myloveee buttt i wanna tell you happy one month again!! YAAYAYYAYAYA i cant believe i already spent 30 joyful days of my year with youuu 🤎 and inshallah ill spend all the days i have left with you. loving you has brought out the innermost happiness i had in me. i never thought anyone would ever be worthy enough to see it let alone bring it out but here you are woaaahhhh. i love every single thing about you from head to toe especially your dih baby 🔥 youre so perfect inside and out and if anything youre just so unreal baby i cant believe youre all mine. my personal favorite part about us is how we arent just lovers baby we’re best friends and soulmates and we have a bond that could represent every possible bond in this life and i wouldnt ever choose anyone or anything over this. i love how we can be freaky without it ever feeling weird and then suddenly switch to being soft and cute like nothing changed and it just feels right with you. i never feel like i have to fake anything or hide parts of myself because i know you would never see my flaws as flaws. i can be myself or whoever i choose to be in that moment and youll still love me the same or even more and that means everything to me. just so you know i rushed this a bittt thats why im not so shakespearey but baby that doesnt make this any less loving or from the heart. youre my world and everything i ever dreamed of and i wouldnt ask for anything better than this. i pray everyday that you stay by my side till my last breath because youre truly all i need in this world. thank you for being you and thank you for showing me what love truly is. you always make me feel worthy and there has never been a single moment where i thought otherwise all thanks to you mylove. i genuinely thank you from the bottom of my heart. there arent enough words to express my gratitude for you or even a quarter of my love but all the paragraphs i wrote you and will continue to write you are an attempt i hope they didnt fail but um yes baby thats it🤎🤎
+    </p>
 
-    <p style="text-align:center;"><strong class="lava">i lava you so much my love</strong></p>
+    <p style="text-align:center;">
+      <strong class="lava">i lava you so much my love</strong>
+    </p>
 
     <div class="volcano">🌋 BOOOOM</div>
   </div>
@@ -171,7 +216,6 @@ function openLetter() {
   document.getElementById("letter").classList.add("open");
 }
 
-// sparkles generator
 for (let i = 0; i < 20; i++) {
   let s = document.createElement("div");
   s.className = "sparkle";
