@@ -2,157 +2,143 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>for ahmer 🤎</title>
+<title>happy one month 🤎</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   background: #c9a37e;
-  font-family: 'Trebuchet MS', cursive;
-  color: white;
-  overflow: hidden;
+  font-family: 'Trebuchet MS', sans-serif;
+  color: #f5f1ec;
+  overflow-x: hidden;
 }
 
-/* ===== CENTER STAGE ===== */
-.stage {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ===== ENVELOPE ===== */
-.envelope {
-  position: relative;
-  width: 320px;
-  height: 200px;
-  background: #f5e6d3;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.35);
-  transition: transform 0.8s ease, opacity 0.6s ease;
-}
-
-.envelope.open {
-  transform: scale(1.2);
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* flaps */
-.flap {
-  position: absolute;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 160px solid transparent;
-  border-right: 160px solid transparent;
-  transition: transform 0.8s ease;
-}
-
-.flap.top {
-  top: 0;
-  border-top: 100px solid #e7d1b3;
-  transform-origin: top;
-}
-
-.envelope.open .flap.top {
-  transform: rotateX(180deg);
-}
-
-.flap.bottom {
-  bottom: 0;
-  border-bottom: 100px solid #e1c7a4;
-}
-
-/* click text */
-.click-text {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ===== TITLE ===== */
+.title {
+  text-align: left;
+  padding: 30px 40px 10px;
   font-size: 22px;
-  color: #7a4e2e;
-  z-index: 2;
+  letter-spacing: 1px;
+  color: #8b5a2b;
 }
 
-/* ===== LETTER PAGE ===== */
-.page {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 1s ease;
-  height: 90%;
+/* ===== LAYOUT ===== */
+.wrapper {
   display: grid;
-  grid-template-columns: 1fr 260px;
-  padding: 30px;
-  gap: 20px;
+  grid-template-columns: 1fr 300px;
+  gap: 30px;
+  padding: 0 40px 40px;
 }
 
-.page.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* letter */
+/* ===== LETTER ===== */
 .letter {
   background: #b08968;
-  border-radius: 20px;
-  padding: 45px;
-  height: 90vh;
+  border-radius: 22px;
+  padding: 40px 45px;
+  height: calc(100vh - 140px);
   overflow-y: auto;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.9;
 }
 
-/* signature */
+/* bottom text */
+.lava {
+  text-align: center;
+  margin: 40px 0 20px;
+  font-weight: bold;
+}
+
 .signature {
-  margin-top: 50px;
   text-align: right;
   font-size: 13px;
+  opacity: 0.9;
+}
+
+/* ===== SIDE ===== */
+.side {
+  position: relative;
 }
 
 /* tiramisu */
 .tiramisu {
   text-align: center;
-  transform: rotate(-5deg);
 }
 .tiramisu img {
-  width: 240px;
+  width: 220px;
 }
 .tiramisu p {
-  font-size: 18px;
+  font-size: 14px;
   margin-top: 8px;
+}
+
+/* ===== FLOATING HEARTS ===== */
+.hearts {
+  position: relative;
+  height: 320px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  font-size: 18px;
+  color: #8b5a2b;
+  opacity: 0.7;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+/* tiny aesthetic sparkle */
+.sparkle {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size: 80px 80px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- ENVELOPE STAGE -->
-<div class="stage" id="stage">
-  <div class="envelope" onclick="openLetter()">
-    <div class="flap top"></div>
-    <div class="flap bottom"></div>
-    <div class="click-text">click here 🤎</div>
-  </div>
+<div class="sparkle"></div>
+
+<div class="title">
+  HAPPY ONE MONTH MY HEARTTT 🤎 🤍
 </div>
 
-<!-- LETTER PAGE -->
-<div class="page" id="page">
-  <div class="letter">
-    <p>
-   hii babyyy i know i already posted you a paragraph and you’ll have to do so much readinggg im sorry myloveee buttt i wanna tell you happy one month again!! YAAYAYYAYAYA i cant believe i already spent 30 joyful days of my year with youuu 🤎 and inshallah ill spend all the days i have left with you. loving you has brought out the innermost happiness i had in me. i never thought anyone would ever be worthy enough to see it let alone bring it out but here you are woaaahhhh. i love every single thing about you from head to toe especially your dih baby 🔥 youre so perfect inside and out and if anything youre just so unreal baby i cant believe youre all mine. my personal favorite part about us is how we arent just lovers baby we’re best friends and soulmates and we have a bond that could represent every possible bond in this life and i wouldnt ever choose anyone or anything over this. i love how we can be freaky without it ever feeling weird and then suddenly switch to being soft and cute like nothing changed and it just feels right with you. i never feel like i have to fake anything or hide parts of myself because i know you would never see my flaws as flaws. i can be myself or whoever i choose to be in that moment and youll still love me the same or even more and that means everything to me. just so you know i rushed this a bittt thats why im not so shakespearey but baby that doesnt make this any less loving or from the heart. youre my world and everything i ever dreamed of and i wouldnt ask for anything better than this. i pray everyday that you stay by my side till my last breath because youre truly all i need in this world. thank you for being you and thank you for showing me what love truly is. you always make me feel worthy and there has never been a single moment where i thought otherwise all thanks to you mylove. i genuinely thank you from the bottom of my heart. there arent enough words to express my gratitude for you or even a quarter of my love but all the paragraphs i wrote you and will continue to write you are an attempt i hope they didnt fail but um yes baby thats it 
-has.
-    </p>
+<div class="wrapper">
 
-    <p style="text-align:center;"><strong>i lava you so much my love 💥</strong></p>
+  <!-- LETTER -->
+  <div class="letter">
+    hii babyyy i know i already posted you a paragraph and you’ll have to do so much readinggg im sorry myloveee buttt i wanna tell you happy one month again!! YAAYAYAYAYA i cant believe i already spent 30 joyful days of my year with youuu 🤎 and inshallah ill spend all the days i have left with you.  
+
+    <br><br>
+    loving you has brought out the innermost happiness i had in me. i never thought anyone would ever be worthy enough to see it let alone bring it out but here you are woaaahhh. i love every single thing about you from head to toe especially your dih baby 🔥  
+
+    <br><br>
+    youre so perfect inside and out and if anything youre just so unreal baby i cant believe youre all mine. my personal favorite part about us is how we arent just lovers baby we’re best friends and soulmates and we have a bond that could represent every possible bond in this life and i wouldnt ever choose anyone or anything over this.  
+
+    <br><br>
+    i love how we can be freaky without it ever feeling weird and then suddenly switch to being soft and cute like nothing changed and it just feels right with you. i never feel like i have to fake anything or hide parts of myself because i know you would never see my flaws as flaws.  
+
+    <br><br>
+    i can be myself or whoever i choose to be in that moment and you’ll still love me the same or even more and that means everything to me. just so you know i rushed this a bitt thats why im not so shakespearey but baby that doesnt make this any less loving or from the heart.  
+
+    <br><br>
+    youre my world and everything i ever dreamed of and i wouldnt ask for anything better than this. i pray everyday that you stay by my side till my last breath because youre truly all i need in this world. thank you for being you and thank you for showing me what love truly is.
+
+you always make me feel worthy and there has never been a single moment where i thought otherwise all thanks to you mylove. i genuinely thank you from the bottom of my heart. there arent enough words to express my gratitude for you or even a quarter of my love but all the paragraphs i wrote you and will continue to write you are an attempt i hope they didnt fail but um yes baby thats it.
+
+    <div class="lava">i lava you so much my love 💥</div>
 
     <div class="signature">
       to: ahmer <br>
@@ -160,22 +146,24 @@ has.
     </div>
   </div>
 
-  <div class="tiramisu">
-    <img src="IMG_0516.jpeg">
-    <p>i know you love tiramisu so i tira miss you 😁😁</p>
-  </div>
-</div>
+  <!-- SIDE -->
+  <div class="side">
+    <div class="tiramisu">
+      <img src="IMG_0516.jpeg">
+      <p>i know you love tiramisu but i tira miss you 🙄🙄</p>
+    </div>
 
-<script>
-function openLetter() {
-  document.querySelector('.envelope').classList.add('open');
-  setTimeout(() => {
-    document.getElementById('stage').style.display = 'none';
-    document.getElementById('page').classList.add('show');
-  }, 700);
-}
-</script>
+    <div class="hearts">
+      <div class="heart" style="left:10%; top:20%; animation-delay:0s;">🤎</div>
+      <div class="heart" style="left:40%; top:60%; animation-delay:1s;">🤎</div>
+      <div class="heart" style="left:70%; top:30%; animation-delay:2s;">🤎</div>
+      <div class="heart" style="left:20%; top:80%; animation-delay:1.5s;">🤎</div>
+      <div class="heart" style="left:55%; top:10%; animation-delay:0.7s;">🤎</div>
+      <div class="heart" style="left:85%; top:70%; animation-delay:2.3s;">🤎</div>
+    </div>
+  </div>
+
+</div>
 
 </body>
 </html>
-
