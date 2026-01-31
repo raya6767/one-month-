@@ -29,43 +29,44 @@ body {
   100% { transform: translateY(-120px); opacity: 0; }
 }
 
-/* tiramisu */
+/* tiramisu (ONLY thing angled) */
 .tiramisu {
   position: fixed;
   top: 20px;
   right: 20px;
   text-align: center;
   z-index: 5;
+  transform: rotate(-5deg);
 }
 .tiramisu img {
-  width: 200px;
+  width: 230px;
 }
 .tiramisu p {
   font-size: 22px;
   margin-top: 6px;
+  color: white;
 }
 
 /* envelope wrapper */
 .wrapper {
   display: flex;
   justify-content: center;
-  margin-top: 120px;
+  margin-top: 140px;
   padding-bottom: 80px;
 }
 
-/* envelope */
+/* envelope (STRAIGHT) */
 .envelope {
   position: relative;
-  width: 80vw;
-  max-width: 600px;
+  width: 90vw;
+  max-width: 640px;
   height: 340px;
   background: #f5e6d3;
   border-radius: 12px;
   box-shadow: 0 20px 35px rgba(0,0,0,0.35);
-  transform: rotate(-5deg);
 }
 
-/* envelope flap */
+/* flap */
 .envelope::before {
   content: "";
   position: absolute;
@@ -73,9 +74,9 @@ body {
   left: 0;
   width: 0;
   height: 0;
-  border-left: 300px solid transparent;
-  border-right: 300px solid transparent;
-  border-top: 170px solid #e7d1b3;
+  border-left: 320px solid transparent;
+  border-right: 320px solid transparent;
+  border-top: 180px solid #e7d1b3;
   z-index: 3;
   transition: opacity 0.4s;
 }
@@ -85,7 +86,7 @@ body {
   opacity: 0;
 }
 
-/* envelope bottom */
+/* bottom */
 .envelope::after {
   content: "";
   position: absolute;
@@ -93,20 +94,20 @@ body {
   left: 0;
   width: 0;
   height: 0;
-  border-left: 300px solid transparent;
-  border-right: 300px solid transparent;
-  border-bottom: 170px solid #e1c7a4;
+  border-left: 320px solid transparent;
+  border-right: 320px solid transparent;
+  border-bottom: 180px solid #e1c7a4;
   z-index: 1;
 }
 
 /* heart */
 .heart {
   position: absolute;
-  top: 105px;
+  top: 110px;
   left: 50%;
   transform: translateX(-50%) rotate(-45deg);
-  width: 72px;
-  height: 72px;
+  width: 78px;
+  height: 78px;
   background: #8b5a2b;
   cursor: pointer;
   animation: pulse 1.5s infinite;
@@ -120,38 +121,38 @@ body {
 .heart:before,
 .heart:after {
   content: "";
-  width: 72px;
-  height: 72px;
+  width: 78px;
+  height: 78px;
   background: #8b5a2b;
   border-radius: 50%;
   position: absolute;
 }
-.heart:before { top: -36px; left: 0; }
-.heart:after { left: 36px; top: 0; }
+.heart:before { top: -39px; left: 0; }
+.heart:after { left: 39px; top: 0; }
 
 .heart span {
   position: absolute;
   transform: rotate(45deg);
   color: white;
   font-size: 13px;
-  top: 24px;
-  left: 10px;
+  top: 26px;
+  left: 12px;
 }
 
-/* letter */
+/* HUGE LETTER */
 .letter {
   position: absolute;
-  top: 30px;
+  top: 28px;
   left: 50%;
   transform: translateX(-50%);
-  width: 92%;
-  height: 80vh;
+  width: 94%;
+  height: 90vh;
   background: #b08968;
-  padding: 28px;
-  border-radius: 12px;
+  padding: 32px;
+  border-radius: 14px;
   overflow-y: auto;
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: 15.5px;
+  line-height: 1.8;
   color: white;
   max-height: 0;
   transition: max-height 1.4s ease;
@@ -159,13 +160,10 @@ body {
 }
 
 .letter.open {
-  max-height: 80vh;
+  max-height: 90vh;
 }
 
 /* lava */
-.lava {
-  position: relative;
-}
 .lava::after {
   content: "💥";
   position: absolute;
@@ -190,7 +188,7 @@ body {
 
 /* signature */
 .signature {
-  margin-top: 30px;
+  margin-top: 40px;
   text-align: right;
   font-size: 13px;
   opacity: 0.9;
@@ -213,7 +211,7 @@ body {
 
     <div class="letter" id="letter">
       <p>
-        hii babyyy i know i already posted you a paragraph and you’ll have to do so much readinggg im sorry myloveee buttt i wanna tell you happy one month again!! YAAYAYYAYAYA i cant believe i already spent 30 joyful days of my year with youuu 🤎 and inshallah ill spend all the days i have left with you...
+        hii babyyy i know i already posted you a paragraph and you’ll have to do so much readinggg im sorry myloveee buttt i wanna tell you happy one month again!! YAAYAYYAYAYA i cant believe i already spent 30 joyful days of my year with youuu 🤎 and inshallah ill spend all the days i have left with you. loving you has brought out the innermost happiness i had in me...
       </p>
 
       <p style="text-align:center;">
@@ -223,7 +221,8 @@ body {
       <div class="volcano">🌋 BOOOOM</div>
 
       <div class="signature">
-        to: ahmer <br> from: raya
+        to: ahmer <br>
+        from: raya
       </div>
     </div>
   </div>
