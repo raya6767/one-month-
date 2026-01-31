@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>for ahmer 🤎</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: #C9A37E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Comic Sans MS', 'Trebuchet MS', cursive;
+  overflow: hidden;
+}
+
+/* sparkles */
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  animation: float 6s infinite ease-in-out;
+}
+@keyframes float {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-120px); opacity: 0; }
+}
+
+/* tiramisu */
+.tiramisu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  text-align: center;
+}
+.tiramisu img {
+  width: 140px;
+}
+.tiramisu p {
+  font-size: 14px;
+}
+
+/* envelope */
+.envelope {
+  background: #f5e6d3;
+  width: 360px;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  text-align: center;
+  position: relative;
+}
+
+/* pulsing heart */
+.heart {
+  width: 80px;
+  height: 80px;
+  background: #8b5a2b;
+  transform: rotate(-45deg);
+  margin: 20px auto;
+  cursor: pointer;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% { transform: rotate(-45deg) scale(1); }
+  50% { transform: rotate(-45deg) scale(1.1); }
+  100% { transform: rotate(-45deg) scale(1); }
+}
+.heart:before,
+.heart:after {
+  content: "";
+  width: 80px;
+  height: 80px;
+  background: #8b5a2b;
+  border-radius: 50%;
+  position: absolute;
+}
+.heart:before { top: -40px; left: 0; }
+.heart:after { left: 40px; top: 0; }
+.heart span {
+  position: absolute;
+  transform: rotate(45deg);
+  color: white;
+  top: 25px;
+  left: 8px;
+  font-size: 14px;
+}
+
+/* unfolding letter */
+.letter {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1.5s ease;
+  font-size: 14.5px;
+  line-height: 1.7;
+  text-align: left;
+}
+.letter.open {
+  max-height: 2000px;
+}
+
+/* lava text */
+.lava {
+  position: relative;
+  color: #5c2c0d;
+}
+.lava::after {
+  content: "💧";
+  position: absolute;
+  left: 50%;
+  animation: drip 1.2s infinite;
+}
+@keyframes drip {
+  0% { top: 0; opacity: 1; }
+  100% { top: 20px; opacity: 0; }
+}
+
+/* volcano */
+.volcano {
+  text-align: center;
+  margin-top: 15px;
+  animation: boom 1s infinite alternate;
+}
+@keyframes boom {
+  from { transform: scale(1); }
+  to { transform: scale(1.2); }
+}
+
+/* signature */
+.signature {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="tiramisu">
+  <img src="54954329-2A06-4318-A214-496FF104AF57.jpeg">
+  <p>i know you love tiramisu so i tira miss you 😁😁</p>
+</div>
+
+<div class="envelope">
+  <div class="heart" onclick="openLetter()">
+    <span>click here</span>
+  </div>
+
+  <div class="letter" id="letter">
+    <p>hii babyyy i know i already posted you a paragraph and you’ll have to do so much readinggg im sorry myloveee buttt i wanna tell you happy one month again!! YAAYAYYAYAYA i cant believe i already spent 30 joyful days of my year with youuu 🤎 and inshallah ill spend all the days i have left with you.</p>
+
+    <p>loving you has brought out the innermost happiness i had in me. i never thought anyone would ever be worthy enough to see it let alone bring it out but here you are woaaahhhh.</p>
+
+    <p>my personal favorite part about us is how we arent just lovers baby we’re best friends and soulmates.</p>
+
+    <p>i never feel like i have to fake anything or hide parts of myself because i know you would never see my flaws as flaws.</p>
+
+    <p>youre my world and everything i ever dreamed of.</p>
+
+    <p style="text-align:center;"><strong class="lava">i lava you so much my love</strong></p>
+
+    <div class="volcano">🌋🍰 BOOOOM</div>
+  </div>
+
+  <div class="signature">
+    to: ahmer<br>from: raya
+  </div>
+</div>
+
+<script>
+function openLetter() {
+  document.getElementById("letter").classList.add("open");
+}
+
+// sparkles generator
+for (let i = 0; i < 20; i++) {
+  let s = document.createElement("div");
+  s.className = "sparkle";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.top = Math.random() * 100 + "vh";
+  s.style.animationDelay = Math.random() * 5 + "s";
+  document.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>
