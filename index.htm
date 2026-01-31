@@ -5,15 +5,15 @@
 <title>happy one month 🤎</title>
 
 <style>
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin:0; padding:0; }
 
 body {
-  margin: 0;
-  min-height: 250vh;
-  background: #c9a37e;
   font-family: 'Trebuchet MS', sans-serif;
+  background: #c9a37e;
   color: #f5f1ec;
   overflow-x: hidden;
+  position: relative;
+  min-height: 200vh; /* lets hearts go all the way down */
 }
 
 /* ===== TITLE ===== */
@@ -25,7 +25,7 @@ body {
   color: #8b5a2b;
 }
 
-/* ===== LAYOUT ===== */
+/* ===== WRAPPER GRID ===== */
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 300px;
@@ -33,25 +33,24 @@ body {
   padding: 0 40px 40px;
 }
 
+/* ===== LETTER ===== */
 .letter {
   background: #b08968;
   border-radius: 22px;
   padding: 40px 45px;
   font-size: 22px;
   line-height: 1.9;
-
-  /* NEW */
-  height: auto;       /* let it grow */
-  max-height: none;   /* remove old limit */
-  overflow: visible;  /* no internal scrollbar */
+  height: auto;
+  max-height: none;
+  overflow: visible;
+  
+  /* fade-in animation */
   opacity: 0;
   animation: fadeIn 2s ease forwards;
   animation-delay: 0.5s;
   position: relative;
   z-index: 2;
-  0); }
-
-  
+}
 
 @keyframes fadeIn {
   0% { opacity: 0; transform: translateY(20px); }
@@ -76,81 +75,48 @@ body {
   position: relative;
 }
 
-/* tiramisu */
-.tiramisu {
+/* ===== IMAGE ===== */
+.right-art {
+  width: 100%;
   text-align: center;
-}
-.tiramisu img {
-  width: 220px;
-}
-.tiramisu p {
-  font-size: 14px;
-  margin-top: 8px;
-}
-
-/* ===== FLOATING HEARTS ===== */
-.hearts {
-  position: relative;
-  height: 320px;
   margin-top: 20px;
+  height: 120vh; /* make image container taller */
   overflow: hidden;
 }
 
-.heart {
-  position: absolute;
-  font-size: 18px;
-  color: #8b5a2b;
-  opacity: 0.7;
-  animation: float 4s ease-in-out infinite;
+.right-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fills container */
+  display: block;
+  animation: floaty 4s ease-in-out infinite;
 }
 
-@keyframes float {
+@keyframes floaty {
   0% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-6px); }
   100% { transform: translateY(0); }
 }
 
-/* tiny aesthetic sparkle */
+/* ===== SPARKLES ===== */
 .sparkle {
   position: fixed;
   inset: 0;
   pointer-events: none;
   background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
   background-size: 80px 80px;
-}
-  .right-art {
-  width: 100%;
-  text-align: center;
-  margin-top: 20px;
+  z-index: 1;
 }
 
-.right-art img {
-  width: 100%;  /* full width of column */
-  height: auto; /* keep proportions */
-  max-height: none; /* no max limit */
-  display: block;
-  margin: 20px auto;
-  animation: floaty 4s ease-in-out infinite;
-}
-  .side {
-  position: relative;
-}
-
-
-/* subtle float */
-@keyframes floaty {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(0); }
-}
+/* ===== HEART RAIN ===== */
 .heart-rain {
-  position: fixed; /* fixed makes it always behind everything */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 0; /* behind letter & image */
+  z-index: 0;
 }
 
 .heart-rain span {
@@ -168,22 +134,6 @@ body {
   0% { transform: translateY(0); opacity: 0; }
   10% { opacity: 0.7; }
   100% { transform: translateY(110vh); opacity: 0; }
-}
-.heart-rain span:nth-child(1) { left: 5%; animation-delay: 0s; }
-.heart-rain span:nth-child(2) { left: 15%; animation-delay: 1s; }
-.heart-rain span:nth-child(3) { left: 25%; animation-delay: 2s; }
-.heart-rain span:nth-child(4) { left: 35%; animation-delay: 3s; }
-.heart-rain span:nth-child(5) { left: 45%; animation-delay: 1.5s; }
-.heart-rain span:nth-child(6) { left: 55%; animation-delay: 2.5s; }
-.heart-rain span:nth-child(7) { left: 65%; animation-delay: 0.8s; }
-.heart-rain span:nth-child(8) { left: 75%; animation-delay: 1.8s; }
-.heart-rain span:nth-child(9) { left: 85%; animation-delay: 2.8s; }
-.heart-rain span:nth-child(10){ left: 95%; animation-delay: 3.6s; }
-
-@keyframes fall {
-  0% { top: -20px; opacity: 0; }
-  10% { opacity: 0.7; }
-  100% { top: 120vh; opacity: 0; }
 }
 </style>
 </head>
@@ -228,15 +178,16 @@ you always make me feel worthy and there has never been a single moment where i 
   </div>
 
   <!-- SIDE -->
-
-
-<!-- SIDE -->
-<div class="side">
-  <div class="right-art">
-  <img src="https://raw.githubusercontent.com/raya6767/one-month-/main/IMG_0524.jpeg" alt="food collage">
+  <div class="side">
+    <div class="right-art">
+      <img src="https://raw.githubusercontent.com/raya6767/one-month-/main/IMG_0524.jpeg" alt="food collage">
+    </div>
   </div>
+
 </div>
-  <div class="heart-rain">
+
+<!-- HEARTS -->
+<div class="heart-rain">
   <span style="--i:1">🤎</span>
   <span style="--i:2">🤎</span>
   <span style="--i:3">🤎</span>
@@ -268,5 +219,6 @@ you always make me feel worthy and there has never been a single moment where i 
   <span style="--i:29">🤎</span>
   <span style="--i:30">🤎</span>
 </div>
+
 </body>
 </html>
