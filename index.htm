@@ -7,13 +7,11 @@
 <style>
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #C9A37E;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-family: 'Comic Sans MS', 'Trebuchet MS', cursive;
-  overflow: hidden;
+  color: white;
+  overflow-y: auto;
 }
 
 /* sparkles */
@@ -33,27 +31,38 @@ body {
 
 /* tiramisu */
 .tiramisu {
-  position: absolute;
+  position: fixed;
   top: 20px;
-  left: 20px;
+  right: 20px;
   text-align: center;
-  z-index: 0;
+  z-index: 5;
 }
 .tiramisu img {
-  width: 160px;
+  width: 200px;
 }
 .tiramisu p {
-  font-size: 26px;
+  font-size: 22px;
+  margin-top: 6px;
+}
+
+/* envelope wrapper */
+.wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 120px;
+  padding-bottom: 80px;
 }
 
 /* envelope */
 .envelope {
   position: relative;
-  width: 520px;
-  height: 320px;
+  width: 80vw;
+  max-width: 600px;
+  height: 340px;
   background: #f5e6d3;
-  border-radius: 10px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  border-radius: 12px;
+  box-shadow: 0 20px 35px rgba(0,0,0,0.35);
+  transform: rotate(-5deg);
 }
 
 /* envelope flap */
@@ -64,10 +73,16 @@ body {
   left: 0;
   width: 0;
   height: 0;
-  border-left: 260px solid transparent;
-  border-right: 260px solid transparent;
-  border-top: 160px solid #e7d1b3;
+  border-left: 300px solid transparent;
+  border-right: 300px solid transparent;
+  border-top: 170px solid #e7d1b3;
   z-index: 3;
+  transition: opacity 0.4s;
+}
+
+/* hide flap */
+.envelope.open::before {
+  opacity: 0;
 }
 
 /* envelope bottom */
@@ -78,20 +93,20 @@ body {
   left: 0;
   width: 0;
   height: 0;
-  border-left: 260px solid transparent;
-  border-right: 260px solid transparent;
-  border-bottom: 160px solid #e1c7a4;
+  border-left: 300px solid transparent;
+  border-right: 300px solid transparent;
+  border-bottom: 170px solid #e1c7a4;
   z-index: 1;
 }
 
 /* heart */
 .heart {
   position: absolute;
-  top: 95px;
+  top: 105px;
   left: 50%;
   transform: translateX(-50%) rotate(-45deg);
-  width: 70px;
-  height: 70px;
+  width: 72px;
+  height: 72px;
   background: #8b5a2b;
   cursor: pointer;
   animation: pulse 1.5s infinite;
@@ -105,50 +120,51 @@ body {
 .heart:before,
 .heart:after {
   content: "";
-  width: 70px;
-  height: 70px;
+  width: 72px;
+  height: 72px;
   background: #8b5a2b;
   border-radius: 50%;
   position: absolute;
 }
-.heart:before { top: -35px; left: 0; }
-.heart:after { left: 35px; top: 0; }
+.heart:before { top: -36px; left: 0; }
+.heart:after { left: 36px; top: 0; }
 
 .heart span {
   position: absolute;
   transform: rotate(45deg);
   color: white;
   font-size: 13px;
-  top: 22px;
+  top: 24px;
   left: 10px;
 }
 
 /* letter */
 .letter {
   position: absolute;
-  top: 40px;
+  top: 30px;
   left: 50%;
   transform: translateX(-50%);
-  width: 90%;
+  width: 92%;
+  height: 80vh;
   background: #b08968;
-  padding: 30px;
-  border-radius: 10px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 1.6s ease;
-  font-size: 18px;
-  line-height: 1.8;
+  padding: 28px;
+  border-radius: 12px;
+  overflow-y: auto;
+  font-size: 16px;
+  line-height: 1.75;
   color: white;
+  max-height: 0;
+  transition: max-height 1.4s ease;
   z-index: 0;
 }
+
 .letter.open {
-  max-height: 900px;
+  max-height: 80vh;
 }
 
-/* lava text */
+/* lava */
 .lava {
   position: relative;
-  color: #fff;
 }
 .lava::after {
   content: "💥";
@@ -164,7 +180,7 @@ body {
 /* volcano */
 .volcano {
   text-align: center;
-  margin-top: 15px;
+  margin-top: 16px;
   animation: boom 1s infinite alternate;
 }
 @keyframes boom {
@@ -174,10 +190,10 @@ body {
 
 /* signature */
 .signature {
-  position: absolute;
-  bottom: 10px;
-  right: 15px;
-  font-size: 12px;
+  margin-top: 30px;
+  text-align: right;
+  font-size: 13px;
+  opacity: 0.9;
 }
 </style>
 </head>
@@ -189,31 +205,34 @@ body {
   <p>i know you love tiramisu so i tira miss you 😁😁</p>
 </div>
 
-<div class="envelope">
-  <div class="heart" onclick="openLetter()">
-    <span>click here</span>
-  </div>
+<div class="wrapper">
+  <div class="envelope" id="env">
+    <div class="heart" onclick="openLetter()">
+      <span>click</span>
+    </div>
 
-  <div class="letter" id="letter">
-    <p>
-hii babyyy i know i already posted you a paragraph and you’ll have to do so much readinggg im sorry myloveee buttt i wanna tell you happy one month again!! YAAYAYYAYAYA i cant believe i already spent 30 joyful days of my year with youuu 🤎 and inshallah ill spend all the days i have left with you. loving you has brought out the innermost happiness i had in me. i never thought anyone would ever be worthy enough to see it let alone bring it out but here you are woaaahhhh. i love every single thing about you from head to toe especially your dih baby 🔥 youre so perfect inside and out and if anything youre just so unreal baby i cant believe youre all mine. my personal favorite part about us is how we arent just lovers baby we’re best friends and soulmates and we have a bond that could represent every possible bond in this life and i wouldnt ever choose anyone or anything over this. i love how we can be freaky without it ever feeling weird and then suddenly switch to being soft and cute like nothing changed and it just feels right with you. i never feel like i have to fake anything or hide parts of myself because i know you would never see my flaws as flaws. i can be myself or whoever i choose to be in that moment and youll still love me the same or even more and that means everything to me. just so you know i rushed this a bittt thats why im not so shakespearey but baby that doesnt make this any less loving or from the heart. youre my world and everything i ever dreamed of and i wouldnt ask for anything better than this. i pray everyday that you stay by my side till my last breath because youre truly all i need in this world. thank you for being you and thank you for showing me what love truly is. you always make me feel worthy and there has never been a single moment where i thought otherwise all thanks to you mylove. i genuinely thank you from the bottom of my heart. there arent enough words to express my gratitude for you or even a quarter of my love but all the paragraphs i wrote you and will continue to write you are an attempt i hope they didnt fail but um yes baby thats it🤎🤎
-    </p>
+    <div class="letter" id="letter">
+      <p>
+        hii babyyy i know i already posted you a paragraph and you’ll have to do so much readinggg im sorry myloveee buttt i wanna tell you happy one month again!! YAAYAYYAYAYA i cant believe i already spent 30 joyful days of my year with youuu 🤎 and inshallah ill spend all the days i have left with you...
+      </p>
 
-    <p style="text-align:center;">
-      <strong class="lava">i lava you so much my love</strong>
-    </p>
+      <p style="text-align:center;">
+        <strong class="lava">i lava you so much my love</strong>
+      </p>
 
-    <div class="volcano">🌋 BOOOOM</div>
-  </div>
+      <div class="volcano">🌋 BOOOOM</div>
 
-  <div class="signature">
-    to: ahmer <br> from: raya
+      <div class="signature">
+        to: ahmer <br> from: raya
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
 function openLetter() {
   document.getElementById("letter").classList.add("open");
+  document.getElementById("env").classList.add("open");
 }
 
 for (let i = 0; i < 20; i++) {
