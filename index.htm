@@ -6,14 +6,14 @@
 
 <style>
 * { box-sizing: border-box; margin:0; padding:0; }
-
 body {
   font-family: 'Trebuchet MS', sans-serif;
   background: #c9a37e;
   color: #f5f1ec;
-  overflow-x: hidden;
+  overflow-x: auto; /* allows horizontal scrolling */
+  min-height: 200vh; /* keeps hearts going down */
   position: relative;
-  min-height: 200vh; /* lets hearts go all the way down */
+; /* lets hearts go all the way down */
 }
 
 /* ===== TITLE ===== */
@@ -28,9 +28,10 @@ body {
 /* ===== WRAPPER GRID ===== */
 .wrapper {
   display: grid;
-  grid-template-columns: 1fr 300px;
+  grid-template-columns: 1fr auto; /* letter + image */
   gap: 30px;
   padding: 0 40px 40px;
+  width: max-content; /* lets it grow horizontally */
 }
 
 /* ===== LETTER ===== */
@@ -77,21 +78,19 @@ body {
 
 /* ===== IMAGE ===== */
 .right-art {
-  width: 100%;
   text-align: center;
   margin-top: 20px;
-  height: 120vh; /* make image container taller */
-  overflow: hidden;
+  height: 120vh; /* still tall */
+  overflow: visible; /* no crop */
 }
 
 .right-art img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* fills container */
+  width: auto; /* keeps original width */
+  max-width: none; /* remove limit */
+  height: 100%; /* fills tall container */
   display: block;
   animation: floaty 4s ease-in-out infinite;
 }
-
 @keyframes floaty {
   0% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
