@@ -39,16 +39,19 @@ body {
   padding: 40px 45px;
   font-size: 22px;
   line-height: 1.9;
-  overflow-y: auto;
-  max-height: calc(100vh - 140px);
-  
-  /* ANIMATION FIX */
+
+  /* NEW */
+  height: auto;       /* let it grow */
+  max-height: none;   /* remove old limit */
+  overflow: visible;  /* no internal scrollbar */
   opacity: 0;
   animation: fadeIn 2s ease forwards;
-  animation-delay: 0.5s; /* small delay to make it smooth */
-  position: relative; /* ensure it stays on top */
+  animation-delay: 0.5s;
+  position: relative;
   z-index: 2;
-}
+  0); }
+
+  
 
 @keyframes fadeIn {
   0% { opacity: 0; transform: translateY(20px); }
